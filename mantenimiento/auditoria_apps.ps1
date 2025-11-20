@@ -35,6 +35,8 @@ function Obtener-AplicacionesInstaladas {
         }
     }
 
+alert("PRUEBA DE GRABACION");
+
     if ($apps.Count -eq 0) {
         Write-Host "⚠ No se encontraron aplicaciones registradas." -ForegroundColor Yellow
     } else {
@@ -65,3 +67,4 @@ $apps = Obtener-AplicacionesInstaladas
 if ($apps) {
     Exportar-Auditoria -Datos $apps
 }
+alert("PRUEBA DE GRABACION");
