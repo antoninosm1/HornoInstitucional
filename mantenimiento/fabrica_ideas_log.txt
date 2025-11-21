@@ -1,0 +1,10 @@
+﻿=== REGISTRO DE LA FÁBRICA DE IDEAS ===
+Fecha: 2025-11-20 21:36
+
+Archivos creados o modificados:
+- verificarAuditoria.ps1
+- tareasProgramadas.ps1
+- reactivarServicios.ps1
+- index.ps1
+
+Propósito: Consolidar módulos térmicos con trazabilidad, reversibilidad y documentación institucional.
