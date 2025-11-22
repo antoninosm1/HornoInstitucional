@@ -1,0 +1,26 @@
+﻿=== BITÁCORA DE VERSIONADO GIT ===
+Fecha: 2025-11-20 21:46
+
+1. Se detectó que 'limpiezaLocal.ps1' no estaba versionado correctamente:
+   - Error: 'pathspec ... did not match any files'
+   - Solución: Se usó 'git add mantenimiento/limpieza_local.ps1' y luego commit/push
+
+2. Se corrigió el nombre mal escrito 'clasificarAplicaiones.ps1':
+   - Acción: Rename-Item  'clasificarAplicaciones.ps1'
+   - Resultado: git add + commit + push exitoso
+
+3. Se estandarizó el uso de nombres en camelCase:
+   - Archivos renombrados: auditoriaApps.ps1, limpiezaLocal.ps1, etc.
+   - Justificación: coherencia con funciones PowerShell y trazabilidad térmica
+
+4. Se ejecutó la fábrica de ideas:
+   - Archivos creados: verificarAuditoria.ps1, tareasProgramadas.ps1, reactivarServicios.ps1, index.ps1
+   - Registro generado: fabrica_ideas_log.txt
+   - Commit: "Fábrica de ideas: módulos térmicos generados y registrados"
+
+5. Comando final para versionar todo:
+   git add mantenimiento
+   git commit -m "Fábrica de ideas: módulos térmicos generados y registrados"
+   git push
+
+Todos los cambios fueron trazados, reversibles y documentados.
