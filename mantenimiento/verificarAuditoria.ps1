@@ -1,64 +1,39 @@
 # === verificarAuditoria.ps1 ===
-# Fecha: 2025-11-20
+# Fecha: 2025-11-24
 # Autor: Antonino
-# Propósito: Comparar auditoría previa con estado actual del sistema
-# Reversibilidad: Solo lectura, sin modificar sistema
-# Comentario: Parte del módulo térmico de mantenimiento institucional
-
-function obtenerAplicacionesActuales {
-    $fuentes = @(
-        "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
-        "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*",
-        "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"
-    )
-
-    $apps = foreach ($fuente in $fuentes) {
-        Get-ItemProperty $fuente -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName } | ForEach-Object {
-            [PSCustomObject]@{
-                nombre   = $_.DisplayName
-                version  = $_.DisplayVersion
-                editor   = $_.Publisher
-            }
-        }
-    }
-
-    return $apps
-}
+# Propósito: Comparar auditoría previa con clasificación actual
+# Reversibilidad: Solo lectura
+# Comentario: Exporta diferencias en log CSV
 
 function compararAuditoria {
     param (
-        [string]$rutaCSV = "$env:USERPROFILE\Documents\auditoria_apps.csv"
+        [string]$archivoAnterior = "$env:USERPROFILE\Documents\auditoria_apps.csv",
+        [string]$archivoActual   = "$env:USERPROFILE\Documents\clasificacion_apps.csv"
     )
 
-    Write-Host "`n=== RESPUESTA TÉRMICA: INICIO DE COMPARACIÓN ===" -ForegroundColor DarkCyan
-
-    if (-not (Test-Path $rutaCSV)) {
-        Write-Host "❌ Archivo de auditoría no encontrado: $rutaCSV" -ForegroundColor Red
-        return
-    }
+    Write-Host "Comparando auditoría anterior con clasificación actual..." -ForegroundColor Cyan
 
     try {
-        $previas = Import-Csv -Path $rutaCSV
-        $actuales = obtenerAplicacionesActuales
+        $anterior = Import-Csv $archivoAnterior
+        $actual   = Import-Csv $archivoActual
 
-        $nuevas = Compare-Object $previas $actuales -Property nombre -PassThru | Where-Object { $_.SideIndicator -eq '=>' }
-        $eliminadas = Compare-Object $previas $actuales -Property nombre -PassThru | Where-Object { $_.SideIndicator -eq '<=' }
+        $eliminadas = Compare-Object $anterior $actual -Property Name -PassThru | Where-Object { $_.SideIndicator -eq '<=' }
+        $nuevas     = Compare-Object $anterior $actual -Property Name -PassThru | Where-Object { $_.SideIndicator -eq '=>' }
 
-        Write-Host "`n=== RESPUESTA TÉRMICA: CAMBIOS DETECTADOS ===" -ForegroundColor DarkCyan
-        Write-Host "🆕 Nuevas aplicaciones: $($nuevas.Count)" -ForegroundColor Green
-        Write-Host "🗑️ Eliminadas desde la última auditoría: $($eliminadas.Count)" -ForegroundColor Yellow
+        Write-Host "Eliminadas: $($eliminadas.Count)" -ForegroundColor Yellow
+        Write-Host "Nuevas: $($nuevas.Count)" -ForegroundColor Green
 
-        if ($nuevas.Count -gt 0) {
-            $nuevas | Format-Table nombre, version, editor -AutoSize
-        }
+        $logPath = "$env:USERPROFILE\Documents\verificacion_auditoria_log.csv"
+        $resultado = @()
+        $resultado += [PSCustomObject]@{ Tipo = "Eliminadas"; Cantidad = $eliminadas.Count; Fecha = (Get-Date) }
+        $resultado += [PSCustomObject]@{ Tipo = "Nuevas"; Cantidad = $nuevas.Count; Fecha = (Get-Date) }
 
-        if ($eliminadas.Count -gt 0) {
-            $eliminadas | Format-Table nombre, version, editor -AutoSize
-        }
+        $resultado | Export-Csv -Path $logPath -NoTypeInformation -Encoding UTF8
+        Write-Host "Log de verificación exportado a: $logPath" -ForegroundColor Cyan
     } catch {
-        Write-Host "❌ Error al comparar auditoría: $_" -ForegroundColor Red
+        Write-Host "Error en verificación de auditoría: $_" -ForegroundColor Red
     }
 }
 
-# EJECUCIÓN
+# Ejecutar función automáticamente
 compararAuditoria

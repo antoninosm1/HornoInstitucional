@@ -1,22 +1,12 @@
-﻿# === auditoria_apps.ps1 ===
-# Fecha: 2025-11-18
+﻿# === auditoriaApps.ps1 ===
+# Fecha: 2025-11-21
 # Autor: Antonino
-# Propósito: Pendiente de definición
-# Reversibilidad: [Sí/No]
-# Dependencias: PowerShell 5+, permisos adecuados
-# Comentario: Parte del módulo térmico de mantenimiento institucional
+# Propósito: Obtener lista de aplicaciones instaladas y exportar a CSV
+# Reversibilidad: Solo lectura
+# Dependencias: PowerShell 5+
+# Comentario: Parte del horno institucional de mantenimiento
 
-# === auditoria_apps.ps1 ===
-# Fecha: 2025-11-19
-# Autor: Antonino
-# Propósito: Auditar software instalado y clasificarlo por origen y tipo
-# Reversibilidad: Solo lectura, sin modificar sistema
-# Dependencias: PowerShell 5+, permisos de lectura
-# Comentario: Parte del módulo térmico de mantenimiento institucional
-
-function Obtener-AplicacionesInstaladas {
-    Write-Host "`n📦 Iniciando auditoría de software instalado..." -ForegroundColor Cyan
-
+function Obtener {
     $fuentes = @(
         "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
         "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*",
@@ -26,45 +16,25 @@ function Obtener-AplicacionesInstaladas {
     $apps = foreach ($fuente in $fuentes) {
         Get-ItemProperty $fuente -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName } | ForEach-Object {
             [PSCustomObject]@{
-                Nombre       = $_.DisplayName
-                Versión      = $_.DisplayVersion
-                Editor       = $_.Publisher
-                InstaladoEn  = $_.InstallDate
-                Origen       = $fuente -replace 'HKLM:\\|HKCU:\\', ''
+                nombre   = $_.DisplayName
+                version  = $_.DisplayVersion
+                editor   = $_.Publisher
             }
         }
-    }
-
-alert("PRUEBA DE GRABACION");
-
-    if ($apps.Count -eq 0) {
-        Write-Host "⚠ No se encontraron aplicaciones registradas." -ForegroundColor Yellow
-    } else {
-        Write-Host "✔ Aplicaciones detectadas: $($apps.Count)" -ForegroundColor Green
-        $apps | Sort-Object Nombre | Format-Table -AutoSize
     }
 
     return $apps
 }
 
-function Exportar-Auditoria {
+function Exportar {
     param (
-        [Parameter(Mandatory)]
-        [array]$Datos,
-        [string]$Ruta = "$env:USERPROFILE\Documents\auditoria_apps.csv"
+        [string]$rutaCSV = "$env:USERPROFILE\Documents\auditoria_apps.csv"
     )
-
-    try {
-        $Datos | Export-Csv -Path $Ruta -NoTypeInformation -Encoding UTF8
-        Write-Host "📄 Auditoría exportada a: $Ruta" -ForegroundColor Green
-    } catch {
-        Write-Host "❌ Error al exportar: $_" -ForegroundColor Red
-    }
+    $apps = Obtener
+    Write-Host "📦 Iniciando auditoría de software instalado..." -ForegroundColor Cyan
+    Write-Host "✔ Aplicaciones detectadas: $($apps.Count)" -ForegroundColor Green
+    $apps | Export-Csv -Path $rutaCSV -NoTypeInformation -Encoding UTF8
+    Write-Host "📄 Auditoría exportada a: $rutaCSV" -ForegroundColor Cyan
 }
 
-# EJECUCIÓN
-$apps = Obtener-AplicacionesInstaladas
-if ($apps) {
-    Exportar-Auditoria -Datos $apps
-}
-alert("PRUEBA DE GRABACION");
+Exportar

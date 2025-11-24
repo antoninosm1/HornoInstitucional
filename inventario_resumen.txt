@@ -1,0 +1,160 @@
+﻿=== INVENTARIO DEL HORNO INSTITUCIONAL ===
+Fecha: 2025-11-23 22:44
+Carpetas encontradas: 3
+
+=== Carpeta: entorno ===
+Cantidad de archivos: 2
+Peso total: 466 bytes
+
+--- Archivo: dependencias.ps1
+Tamaño: 257 bytes
+Última modificación: 11/18/2025 21:13:32
+Contenido inicial:
+# === dependencias.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: entornoDesarrollo.md
+Tamaño: 209 bytes
+Última modificación: 11/20/2025 20:34:35
+Contenido inicial:
+# Documentación de entornos activos (Python, Node, Java, etc.)
+
+git add entorno/entornoDesarrollo.md
+git commit -m "Estandarización térmica: renombrado y trazado de suspensión de servicios"
+git push
+Comentario: Documento Markdown, probablemente documentación.
+
+=== Carpeta: mantenimiento ===
+Cantidad de archivos: 8
+Peso total: 14266 bytes
+
+--- Archivo: auditoriaApps.ps1
+Tamaño: 1368 bytes
+Última modificación: 11/23/2025 20:55:40
+Contenido inicial:
+# === auditoriaApps.ps1 ===
+# Fecha: 2025-11-21
+# Autor: Antonino
+# Propósito: Obtener lista de aplicaciones instaladas y exportar a CSV
+# Reversibilidad: Solo lectura
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: bitacora_git.txt
+Tamaño: 1843 bytes
+Última modificación: 11/21/2025 22:30:02
+Contenido inicial:
+=== BITÁCORA DE VERSIONADO GIT ===
+Fecha: 2025-11-21 19:42
+
+1. Registro inicial de la fábrica de ideas.
+2. Archivos institucionales creados o modificados:
+Comentario: Archivo de texto, registro o bitácora.
+
+--- Archivo: clasificarAplicaciones.ps1
+Tamaño: 1518 bytes
+Última modificación: 11/23/2025 21:20:46
+Contenido inicial:
+# === clasificarAplicaciones.ps1 ===
+# Fecha: 2025-11-21
+# Autor: Antonino
+# PropÃ³sito: Clasificar aplicaciones instaladas segÃºn criterios institucionales
+# Reversibilidad: Solo lectura
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: index.ps1
+Tamaño: 583 bytes
+Última modificación: 11/20/2025 21:36:40
+Contenido inicial:
+# === index.ps1 ===
+# Fecha de generación: 2025-11-20 21:36
+# Registro institucional de módulos térmicos
+
+auditoriaApps.ps1           Exporta CSV con apps instaladas
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: limpiezaLocal.ps1
+Tamaño: 2316 bytes
+Última modificación: 11/19/2025 22:59:48
+Contenido inicial:
+# === limpieza_local.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: suspenderServicios.ps1
+Tamaño: 2535 bytes
+Última modificación: 11/19/2025 23:26:54
+Contenido inicial:
+# === suspension_servicios.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: tareasProgramadas.ps1
+Tamaño: 1845 bytes
+Última modificación: 11/21/2025 19:49:58
+Contenido inicial:
+# === tareasProgramadas.ps1 ===
+# Fecha: 2025-11-21
+# Autor: Antonino
+# Propósito: Registrar, listar y eliminar tareas térmicas institucionales
+# Reversibilidad: Total
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: verificarAuditoria.ps1
+Tamaño: 2258 bytes
+Última modificación: 11/23/2025 21:21:08
+Contenido inicial:
+# === verificarAuditoria.ps1 ===
+# Fecha: 2025-11-21
+# Autor: Antonino
+# PropÃ³sito: Comparar auditorÃ­a previa con estado actual del sistema
+# Reversibilidad: Solo lectura
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+=== Carpeta: protocolos ===
+Cantidad de archivos: 3
+Peso total: 776 bytes
+
+--- Archivo: desinstalacion.ps1
+Tamaño: 259 bytes
+Última modificación: 11/18/2025 21:13:32
+Contenido inicial:
+# === desinstalacion.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: suspension.ps1
+Tamaño: 255 bytes
+Última modificación: 11/18/2025 21:13:32
+Contenido inicial:
+# === suspension.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+--- Archivo: verificacionPost.ps1
+Tamaño: 262 bytes
+Última modificación: 11/18/2025 21:13:32
+Contenido inicial:
+# === verificacion_post.ps1 ===
+# Fecha: 2025-11-18
+# Autor: Antonino
+# Propósito: Pendiente de definición
+# Reversibilidad: [Sí/No]
+Comentario: Script PowerShell, revisar funciones y propósito.
+
+=== FIN DEL INVENTARIO ===

@@ -1,4 +1,18 @@
 ﻿=== BITÁCORA DE VERSIONADO GIT ===
+Fecha: 2025-11-21 19:42
+
+1. Registro inicial de la fábrica de ideas.
+2. Archivos institucionales creados o modificados:
+   - verificarAuditoria.ps1
+   - tareasProgramadas.ps1
+   - reactivarServicios.ps1
+   - index.ps1
+3. Propósito: Consolidar módulos térmicos con trazabilidad y reversibilidad.
+=== ENTRADA DE BITÁCORA ===
+Fecha: 2025-11-21 19:50
+Acción: Relleno de tareas programadas
+Detalle: Se definieron funciones para registrar, listar y eliminar tareas térmicas.
+=== BITÁCORA DE VERSIONADO GIT ===
 Fecha: 2025-11-20 21:46
 
 1. Se detectó que 'limpiezaLocal.ps1' no estaba versionado correctamente:
@@ -24,3 +38,10 @@ Fecha: 2025-11-20 21:46
    git push
 
 Todos los cambios fueron trazados, reversibles y documentados.
+
+@"
+=== ENTRADA DE BITÁCORA ===
+Fecha: $(Get-Date -Format "yyyy-MM-dd HH:mm")
+Acción: Creación de launcher.ps1
+Detalle: Se definió un punto de entrada único para ejecutar el ciclo completo del horno institucional.
+"@ | Out-File -FilePath "C:\HornoInstitucional\mantenimiento\bitacora_git.txt" -Encoding UTF8 -Append
