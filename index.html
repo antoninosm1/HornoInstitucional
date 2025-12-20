@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Infografía de adopción — Perros rescatados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Perros rescatados buscando hogar — adopción responsable en Juárez, Chihuahua." />
+  <style>
+    :root {
+      --bg:#0f172a; --panel:#111827; --text:#e5e7eb; --muted:#9ca3af; --accent:#22d3ee; --good:#10b981; --warn:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial}
+    .wrap{max-width:960px;margin:0 auto;padding:24px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .header{display:flex;gap:16px;flex-wrap:wrap;padding:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .brand{flex:1}
+    .brand h1{margin:0;font-size:22px;color:var(--accent)}
+    .brand p{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .badge{padding:6px 10px;border-radius:999px;background:#0b1220;border:1px solid #1f2937;font-size:12px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1.3fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,.08)}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .photo{aspect-ratio:1/1;background:#0b1220;display:flex;align-items:center;justify-content:center}
+    .photo img{width:100%;height:100%;object-fit:cover}
+    .content{padding:18px}
+    h2{margin:0 0 10px;font-size:18px}
+    .list{display:grid;gap:8px;margin:10px 0 16px}
+    .item{display:flex;gap:10px}
+    .item b{min-width:140px;color:#cbd5e1}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+    .tag{padding:6px 10px;border-radius:999px;background:#0b1220;border:1px solid #1f2937;font-size:12px}
+    .cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .btn{padding:10px 12px;border-radius:10px;border:1px solid #1f2937;background:#0b1220;color:var(--accent);text-decoration:none}
+    .btn--primary{background:var(--accent);color:#082f49;border-color:transparent}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:14px 0}
+    .foot{padding:12px 16px;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <div class="brand">
+          <h1>Perros rescatados — buscando hogar</h1>
+          <p>Juárez, Chihuahua • Adopción responsable • Esterilización y seguimiento</p>
+        </div>
+        <span class="badge">Contacto: 55-1234-5678 • WhatsApp</span>
+      </div>
+
+      <div class="grid">
+        <!-- Reemplaza src con tu URL pública o ruta del archivo -->
+        <div class="photo">
+          <img src="REEMPLAZA_CON_TU_URL_DE_IMAGEN.jpg" alt="Perro rescatado de pelaje atigrado buscando hogar" />
+        </div>
+
+        <div class="content">
+          <h2>Conócelos</h2>
+          <div class="list">
+            <div class="item"><b>Nombre:</b> Por definir (cachorro atigrado)</div>
+            <div class="item"><b>Edad aprox.:</b> 6–12 meses</div>
+            <div class="item"><b>Tamaño:</b> Pequeño–mediano</div>
+            <div class="item"><b>Carácter:</b> Tranquilo, sociable, se adapta bien</div>
+            <div class="item"><b>Salud:</b> Desparasitado, en evaluación básica (cartilla al día de ser posible)</div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Vacunación responsable</span>
+            <span class="tag">Esterilización</span>
+            <span class="tag">Visita previa</span>
+            <span class="tag">Contrato de adopción</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2>Requisitos para adoptar</h2>
+          <div class="list">
+            <div class="item"><b>Compromiso:</b> Cuidado, ejercicio y revisiones veterinarias.</div>
+            <div class="item"><b>Hogar:</b> Espacio seguro y cercado; evitar cadenas permanentes.</div>
+            <div class="item"><b>Seguimiento:</b> Aceptar mensajes y fotos en el periodo inicial.</div>
+          </div>
+
+          <div class="cta">
+            <a class="btn btn--primary" href="mailto:adopciones@example.com?subject=Quiero%20adoptar">Quiero adoptar</a>
+            <a class="btn" href="https://wa.me/5215512345678" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+            <a class="btn" href="#donar" onclick="alert('Gracias por considerar apoyar. Puedes donar croquetas o apoyo veterinario.');return false;">Apoyar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        Compartir: copia y pega este enlace cuando el sitio esté publicado. Fotos y detalles se actualizan conforme avance la evaluación.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
